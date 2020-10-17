@@ -1,0 +1,9 @@
+.idea/
+.vs/
+Binaries/
+Build/
+Intermediate/
+Saved/
+Plugins/OnlineSubsystemEOS/Binaries/
+Plugins/OnlineSubsystemEOS/Intermediate/
+Plugins/Developer/

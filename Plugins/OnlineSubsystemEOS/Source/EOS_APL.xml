@@ -1,0 +1,51 @@
+﻿<root xmlns:android="http://schemas.android.com/apk/res/android">
+    <init>
+        <log text="EOS Android APL"/>
+    </init>
+
+    <resourceCopies>
+        <copyFile src="$S(PluginDir)/../EOS/EOS-SDK-1.8/SDK/Lib/$S(Architecture)/libEOSSDK.so"
+                  dst="$S(BuildDir)/libs/$S(Architecture)/libEOSSDK.so"/>
+        
+        <copyFile src="$S(PluginDir)/../EOS/EOS-SDK-1.8/SDK/Bin/eos-sdk.aar"
+                  dst="$S(BuildDir)/libs/eos-sdk.aar"/>
+    </resourceCopies>
+
+    <buildGradleAdditions>
+        <insert>
+            repositories {
+                flatDir {
+                    dirs 'libs'
+                }
+            }
+
+            //This is needed else crypto thing will cause gradle build failure, need to investigate why.
+            android {
+                packagingOptions {
+                    exclude 'META-INF/DEPENDENCIES'
+                    exclude 'META-INF/LICENSE'
+                    exclude 'META-INF/LICENSE.txt'
+                    exclude 'META-INF/license.txt'
+                    exclude 'META-INF/NOTICE'
+                    exclude 'META-INF/NOTICE.txt'
+                    exclude 'META-INF/notice.txt'
+                    exclude 'META-INF/ASL2.0'
+                    exclude("META-INF/*.kotlin_module")
+                    exclude("build-data.properties")
+                }
+            }
+
+
+            dependencies {
+                implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+                implementation 'androidx.security:security-crypto:1.0.0-rc03'
+                implementation fileTree(dir: 'src/main/libs', include: ['eos-sdk.aar'])
+            }
+
+        </insert>
+    </buildGradleAdditions>
+
+    <soLoadLibrary>
+        <loadLibrary name="EOSSDK" failmsg="EOSSDK not loaded."/>
+    </soLoadLibrary>
+</root>
