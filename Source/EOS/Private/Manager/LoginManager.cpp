@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright 2020 - Infinity DrawnzerGames, Inc. All Rights Reserved.
 
 #include "LoginManager.h"
 #include "OnlineSubsystem.h"
