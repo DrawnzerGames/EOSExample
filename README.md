@@ -10,6 +10,11 @@ Working Platform
 1. Windows.
 2. SDK Loads and interface is created fine on Android, but the same code gives EOS_UnexpectedError.
 
+Tested Interface
+1. AuthInterface.
+
+This is only POC for my other main project, I m making it open as it may help others.
+
 NOTE
 You don't need to copy any DLLs or Linux or Android Binaries. All the binaries are already included.
 
